@@ -1,5 +1,6 @@
-date,name,mood,mood_score,sleep_hours,screen_time,water_intake,journal,sentiment
-2026-09-22 18:38:44,rima,😔Sad,2,3,2,3,i'm feeling very low today,Not analyzed
-2026-09-22 18:51:28,PRACHI,😊Happy,5,8,5,2,YAYYY I'm so happy todayyyyyy,Not analyzed
-2026-09-22 19:33:59,RIMA,😊 Happy,5,7,5,5,YAYYYY IM SO HAPPY TODAYY!!!!,Not analyzed
-2026-09-22 19:37:35,prachii,😔 Sad,2,2,8,3,today im feeling very low idk how im gonna survive ,negative
+date,name,mood,mood_score,sleep_hours,screen_time,water_intake,journal,sentiment,confidence
+2026-09-22 18:38:44,rima,😔Sad,2,3,2,3,i'm feeling very low today,Not analyzed,
+2026-09-22 18:51:28,PRACHI,😊Happy,5,8,5,2,YAYYY I'm so happy todayyyyyy,Not analyzed,
+2026-09-22 19:33:59,RIMA,😊 Happy,5,7,5,5,YAYYYY IM SO HAPPY TODAYY!!!!,Not analyzed,
+2026-09-22 19:37:35,prachii,😔 Sad,2,2,8,3,today im feeling very low idk how im gonna survive ,negative,
+2026-09-22 19:43:48,rima,😀 Excited,5,7,4,8,im so excited about my project,positive,86.38

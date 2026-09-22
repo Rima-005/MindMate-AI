@@ -143,12 +143,40 @@ if st.button("Submit Check-in"):
     else:
 
         # ----------------------------------------------------
-        # SENTIMENT ANALYSIS
+        # SENTIMENT PREDICTION
         # ----------------------------------------------------
 
         sentiment = sentiment_model.predict([journal])[0]
 
+        # Get probability for every sentiment class
+        probabilities = sentiment_model.predict_proba([journal])[0]
+
+        # Highest probability
+        confidence = probabilities.max() * 100
+
+
+        # ----------------------------------------------------
+        # DISPLAY SENTIMENT
+        # ----------------------------------------------------
+
         st.subheader("🧠 Journal Sentiment")
+
+        st.write(
+            f"**Detected sentiment:** {sentiment.capitalize()}"
+        )
+
+        st.write(
+            f"**Model confidence:** {confidence:.1f}%"
+        )
+
+        st.progress(
+            int(confidence)
+        )
+
+
+        # ----------------------------------------------------
+        # SENTIMENT MESSAGE
+        # ----------------------------------------------------
 
         if sentiment == "positive":
 
@@ -214,7 +242,8 @@ if st.button("Submit Check-in"):
             "screen_time": screen_time,
             "water_intake": water,
             "journal": journal,
-            "sentiment": sentiment
+            "sentiment": sentiment,
+            "confidence": round(confidence, 2)
         }
 
 
@@ -238,7 +267,8 @@ if st.button("Submit Check-in"):
                     "screen_time",
                     "water_intake",
                     "journal",
-                    "sentiment"
+                    "sentiment",
+                    "confidence"
                 ]
             )
 
@@ -249,6 +279,9 @@ if st.button("Submit Check-in"):
 
         if "sentiment" not in df.columns:
             df["sentiment"] = "Not analyzed"
+
+        if "confidence" not in df.columns:
+            df["confidence"] = None
 
 
         # ----------------------------------------------------
@@ -290,6 +323,9 @@ if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
     if "sentiment" not in df.columns:
         df["sentiment"] = "Not analyzed"
 
+    if "confidence" not in df.columns:
+        df["confidence"] = None
+
 
     # --------------------------------------------------------
     # MOOD HISTORY
@@ -306,7 +342,8 @@ if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
                 "sleep_hours",
                 "screen_time",
                 "water_intake",
-                "sentiment"
+                "sentiment",
+                "confidence"
             ]
         ],
         use_container_width=True
